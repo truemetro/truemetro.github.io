@@ -26,7 +26,7 @@ a:hover {
 	color: var(--bg1);
 }
 
-.img-disp .imgs{
+.img-disp .imgs {
 	display: flex;
 }
 
@@ -127,9 +127,13 @@ img {
 		width: 90vw;
 		padding: 10px;
 	}
-	
+
 	.buttons {
 		width: 90vw;
 		padding: 10px;
+	}
+
+	.brief span {
+		float: none;
 	}
 }
