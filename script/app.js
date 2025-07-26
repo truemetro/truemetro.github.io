@@ -1,27 +1,15 @@
-const c1d = "#251749";
-const c2d = "#263159";
-const c3d = "#5c6b99";
-const c4d = "#FFFBEB";
+const text = "#000000"
+const bg1 = "#808080"
+const bg2 = "#FFFFFF"
 
 let sheet = document.styleSheets[2];
-let rules = sheet.cssRules;
+let rules = sheet.cssRules
 
-// let c1d = "#432C7A";
-// let c2d = "#80489C";
-// let c3d = "#FF8FB1";
-// let c4d = "#FCE2DB";
-
-links = document.querySelectorAll('a');
-let body = document.querySelector('body');
-let mnav = document.querySelector('.mnav');
-let mnavmenu = document.querySelector('.mobilenav');
-let newLocation;
 let darkBtn;
 let dark;
 
-
 if (sessionStorage.getItem('dark') === null) {
-    sessionStorage.setItem('dark', 'true');
+    sessionStorage.setItem('dark', 'false');
 }
 
 if (sessionStorage.getItem('dark') == 'true') {
@@ -62,64 +50,36 @@ darkBtn.addEventListener('click', function () {
     }
 });
 
-links.forEach(link => {
-    if (link.href != window.location.href) {
-        link.addEventListener('click', function (e) {
-            e.preventDefault();
-            newLocation = this.href;
-            body.style.transform = 'translate(0, -100vh)';
-            body.style.filter = 'blur(5px)';
-            body.style.transition = 'all 0.5s';
-            changeWindow(e);
-        });
-
-    }
-    else {
-        link.style.setProperty('text-decoration', 'none');
-        link.addEventListener('click', function (e) {
-            e.preventDefault();
-        });
-        link.innerHTML = '<svg width="10" height="10">'
-            + '<circle cx = "5" cy = "5" r = "5" />'
-            + '</svg >';
-    }
-});
-
-function changeWindow(e) {
-    window.location = newLocation;
-}
-
 function changeMode() {
     if (!dark) {
         sessionStorage.setItem('dark', 'false');
         document.documentElement.style
-            .setProperty('--c1', c4d);
+            .setProperty('--text', text);
         document.documentElement.style
-            .setProperty('--c2', c3d);
-        document.documentElement.style
-            .setProperty('--c3', c2d);
-        document.documentElement.style
-            .setProperty('--c4', c3d);
+            .setProperty('--bg2', bg2);
 
     }
     else {
         sessionStorage.setItem('dark', 'true');
         document.documentElement.style
-            .setProperty('--c1', c1d);
+            .setProperty('--text', bg2);
         document.documentElement.style
-            .setProperty('--c2', c2d);
-        document.documentElement.style
-            .setProperty('--c3', c3d);
-        document.documentElement.style
-            .setProperty('--c4', c4d);
+            .setProperty('--bg2', text);
     }
 }
 
-mnav.addEventListener('click', function () {
-    if (getComputedStyle(mnavmenu).display == "none") {
-        mnavmenu.style.display = 'grid';
-    }
-    else if (mnavmenu.style.display == 'grid') {
-        mnavmenu.style.display = 'none';
-    }
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'c' || event.key === 'C') { 
+    document.documentElement.style.setProperty('--text', getRandomHexColor);
+		document.documentElement.style.setProperty('--bg1', getRandomHexColor);
+		document.documentElement.style.setProperty('--bg2', getRandomHexColor);
+  }
 });
+
+function getRandomHexColor() {
+  let randomColor = Math.floor(Math.random() * 16777215).toString(16);
+  while (randomColor.length < 6) {
+    randomColor = "0" + randomColor;
+  }
+  return "#" + randomColor;
+}
