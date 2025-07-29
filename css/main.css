@@ -22,6 +22,10 @@ a {
 	border-bottom: 1px solid var(--text);
 }
 
+.minorseparator {
+	border-top: 1px solid var(--text);
+}
+
 a:hover {
 	color: var(--bg1);
 }
@@ -45,6 +49,7 @@ img {
 
 .material-symbols-outlined:hover {
 	user-select: none;
+	color: var(--bg1);
 	font-variation-settings:
 		'FILL' 1,
 		'wght' 600,
@@ -58,7 +63,7 @@ img {
 
 .buttons {
 	background-color: var(--bg2);
-	margin: 5px auto;
+	margin: 10px auto 5px auto;
 	padding: 10px 25px;
 	border: 2px solid;
 	box-shadow: 2px 2px 0px var(--text);
@@ -77,7 +82,7 @@ img {
 
 .container {
 	background-color: var(--bg2);
-	margin: 5px auto 10px auto;
+	margin: 5px auto 5px auto;
 	padding: 25px;
 	border: 2px solid;
 	box-shadow: 2px 2px 0px var(--text);
@@ -122,6 +127,16 @@ img {
 	float: right;
 }
 
+.footer {
+		background-color: var(--bg2);
+		margin: 5px auto 10px auto;
+		padding: 10px 25px;
+		border: 2px solid;
+		box-shadow: 2px 2px 0px var(--text);
+		width: 70vw;
+		max-width: 800px;
+	}
+
 @media screen and (max-width: 600px) {
 	.container {
 		width: 90vw;
@@ -129,6 +144,11 @@ img {
 	}
 
 	.buttons {
+		width: 90vw;
+		padding: 10px;
+	}
+
+	.footer {
 		width: 90vw;
 		padding: 10px;
 	}
